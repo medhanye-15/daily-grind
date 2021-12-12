@@ -52,6 +52,16 @@
     <main>
 		 <header><h3 class="slogan">You drink our coffee, we make large bucks!</h3></header>
 		<div id="coffeeTarget"></div>
+
+		<p>click below to view the coffee special for different days of the week</p>
+		
+		<p><a href="?day=0">Sunday</a></p>
+		<p><a href="?day=1">Monday</a></p>
+		<p><a href="?day=2">Tuesday</a></p>
+		<p><a href="?day=3">Wednesday</a></p>
+		<p><a href="?day=4">Thursday</a></p>
+		<p><a href="?day=5">Friday</a></p>
+		<p><a href="?day=6">Saturday</a></p>
 		<!--
 		<p>
 			<img src="images/pumpkin-spice-latte.jpg" alt="Our Pumpkin Spice Latte tastes great on a Fall Day!" id="coffee" />
@@ -84,27 +94,52 @@
 
 		function coffeeTemplate(coffee){
 			let myReturn = "";
-			myReturn +=`        <p>
-             <img src="images/${coffee.pic}" alt="Our Pumpkin Spice Latte tastes great on a Fall Day!" id="coffee" />
-            <strong >${coffee.weekday}'s Coffee Special:</strong> ${coffee.weekday}'s daily coffee special is <strong>${coffee.coffee}</strong>, which makes us wish it was always Fall, as this is one of our top sellers!, ${coffee.describtion}
-        </p>`;
+
+			myReturn += ` <p>
+             <img src="images/${coffee.pic}" alt="${coffee.alt}" id="coffee" />
+             ${coffee.weekday}'s daily coffee special is <strong>${coffee.coffee}</strong>, ${coffee.description}
+        </p>
+		`;
 			return myReturn;
-		}
-
-
-
-
-
+		  }
+		//use location object to access querystring (address bar)
+		const queryString = window.location.search;
+	
+		//output to console    
+		console.log(queryString);
+		
+		//separate querystring parameters
+		const urlParams = new URLSearchParams(queryString);
+	
 		let myDate = new Date();
 
 		let today = myDate.getDay();
-		let cofee = "";//will be an object
-				//TEST ONLY DON'T LEAVE THIS LINE IN THE FINAL VERSION		
+		let cofee = "";
+
+		if(urlparams.has("day")){
+			today = urlParams.get("day");
+			today = parseInt(today);
+		}
+
+		
+
+
+
+		//REMOVE THE FOLLOWING WHEN NOT TESTING	
 		//today = 0;
-today = 2
+
 		switch(today){
 			case 0:
 				today = "sunday";
+
+				coffee ={
+					pic: "frappacciono.jpg",
+					alt: "A pic of frappaccino",
+					color: "gray",
+					description:  `today's special!`,
+					coffee: "frappaccino",
+					weekday: "Sunday"
+				}
 			break;
 			case 1:
 				today = "Monday";
@@ -125,14 +160,10 @@ today = 2
 					pic: "caramel-latte.jpg",
 					alt: "A pic of caramel latte",
 					color: "gold",
-					description:  `Our caramel latte is very popular`,
+					description:`Our caramel latte is very popular!`,
 					coffee: "Caramel Latte",
 					weekday: "Tuesday"
 				}
-
-
-
-
 
 			break;
 
@@ -151,14 +182,38 @@ today = 2
 
 			case 4:
 				today = "Thursday";
+				coffee ={
+					pic: "mocha.jpg",
+					alt: "A pic of mocha",
+					color: "red",
+					description:  `mocha is awesome!`,
+					coffee: "mocha",
+					weekday: "Thursday"
+				}
 			break;
 
 			case 5:
 				today = "Friday";
+				coffee ={
+					pic: "cold-brew.jpg",
+					alt: "A pic of cold brew",
+					color: "black",
+					description:  `cold-brew are awesome!`,
+					coffee: "cold-brew",
+					weekday: "Friday"
+				}
 			break;
 
 			case 6:
 				today = "Saturday";
+				coffee ={
+					pic: "drip.jpg",
+					alt: "A pic of drip",
+					color: "orange",
+					description:  `sip the drip!`,
+					coffee: "drip",
+					weekday: "wednesday"
+				}
 			break;
 
 			default:
@@ -167,7 +222,7 @@ today = 2
 		
 		document.getElementById("coffeeTarget").innerHTML = coffeeTemplate(coffee);
 
-
+		document.queryselector("html").style.backgroundColor = coffee.color;
 
 
 		console.log(today);
@@ -184,7 +239,7 @@ today = 2
 
 
 
-		//allert("hi there!");
+		
     </script>
 	
 </body>
