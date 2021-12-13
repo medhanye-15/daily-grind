@@ -47,7 +47,15 @@
 	<header>
 	    <img src="images/largebucks-logo.jpg" alt="You drink our coffee, we make large bucks!" class="flexible" id="logo" />
 		<h1 class="masthead">LARGEBUCK$ COFFEE</h1>
-
+		<nav>
+            <ul>
+                <li><a href="#">Sample Link</a></li>
+                <li><a href="#">Sample Link</a></li>
+                <li><a href="#">Sample Link</a></li>
+                <li><a href="#">Sample Link</a></li>
+                <li><a href="#">Sample Link</a></li>
+            </ul>
+        </nav>
 	</header>
     <main>
 		 <header><h3 class="slogan">You drink our coffee, we make large bucks!</h3></header>
@@ -116,7 +124,7 @@
 		let today = myDate.getDay();
 		let cofee = "";
 
-		if(urlparams.has("day")){
+		if(urlParams.has("day")){
 			today = urlParams.get("day");
 			today = parseInt(today);
 		}
@@ -133,7 +141,7 @@
 				today = "sunday";
 
 				coffee ={
-					pic: "frappacciono.jpg",
+					pic: "frappaccino.jpg",
 					alt: "A pic of frappaccino",
 					color: "gray",
 					description:  `today's special!`,
@@ -222,7 +230,7 @@
 		
 		document.getElementById("coffeeTarget").innerHTML = coffeeTemplate(coffee);
 
-		document.queryselector("html").style.backgroundColor = coffee.color;
+		document.querySelector("html").style.backgroundColor = coffee.color;
 
 
 		console.log(today);
