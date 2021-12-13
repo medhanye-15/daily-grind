@@ -51,6 +51,9 @@
 	</header>
     <main>
 		 <header><h3 class="slogan">You drink our coffee, we make large bucks!</h3></header>
+
+		 <h5>The purpose of this webpage is to use JavaScript to determine the coffee of the day.<br> 
+			This page presents a different image, custom message, and color based on each of the following days of the week:</h5>
 		<div id="coffeeTarget"></div>
 
 		<p>click below to view the coffee special for different days of the week</p>
@@ -97,7 +100,7 @@
 
 			myReturn += ` <p>
              <img src="images/${coffee.pic}" alt="${coffee.alt}" id="coffee" />
-             ${coffee.weekday}'s daily coffee special is <strong>${coffee.coffee}</strong>, ${coffee.description}
+			 <strong>${coffee.weekday}'s Coffee Special:</strong> ${coffee.weekday}'s daily coffee special is <strong>${coffee.coffee}</strong>, ${coffee.description}
         </p>
 		`;
 			return myReturn;
